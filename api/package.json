@@ -1,0 +1,21 @@
+{
+  "name": "react-node-sql-api",
+  "version": "0.1.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.bundle.js",
+    "build": "webpack",
+    "dev": "nodemon ./server.js localhost 5000",
+    "format": "npm run prettier -- --write",
+    "check-format": "npm run prettier -- --list-different"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "http-proxy-middleware": "^1.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4",
+    "prettier": "^2.1.2",
+    "webpack": "^4.43.0"
+  }
+}
