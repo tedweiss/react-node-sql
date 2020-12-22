@@ -3,6 +3,7 @@ import React from 'react'
 import {Story, Meta} from '@storybook/react/types-6-0'
 
 import {Address, AddressProps} from '../ui/Address'
+import {address1} from './mockData/mockData'
 
 export default {
   title: 'Address',
@@ -12,12 +13,4 @@ export default {
 const Template: Story<AddressProps> = args => <Address {...args} />
 
 export const AddressStory = Template.bind({})
-AddressStory.args = {
-  type: 'Home',
-  street1: '123 Main St.',
-  street2: 'Apt. 2B',
-  city: 'Anywhere',
-  state: 'MI',
-  zip: '90210',
-  extendedZip: '0987',
-}
+AddressStory.args = {...address1}
