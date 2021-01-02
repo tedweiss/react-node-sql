@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
-const data = require('../Utils/data')
+const {addresses} = require('../Utils/addresses')
 
 router.get('/', function (req, res) {
   console.log('api/addresses called!!!!')
-  res.json(data.addresses)
+  res.json(addresses)
 })
 
 router.get('/:userId', function (req, res) {

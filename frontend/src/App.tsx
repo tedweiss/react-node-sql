@@ -1,7 +1,7 @@
 import * as React from 'react'
 import logo from './logo.svg'
 import './App.css'
-import {Profiles} from './ui/Profiles'
+import {Addresses} from './ui/Addresses'
 import useFetch from './services/useFetch'
 
 interface Test {
@@ -9,13 +9,13 @@ interface Test {
 }
 
 const App: React.FC<Test> = ({greeting = 'hello'}) => {
-  const {loading, data, error} = useFetch('/api/profiles', [])
+  const {loading, data, error} = useFetch('/api/addresses', [])
 
-  const profiles = data
+  const addresses = data
   return (
     <div className="App">
       {greeting}
-      {!loading && !error && <Profiles profiles={profiles} />}
+      {!loading && !error && <Addresses addresses={addresses} />}
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
