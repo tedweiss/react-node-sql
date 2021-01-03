@@ -8,4 +8,11 @@ const con = mysql.createConnection({
   database: login.dbName,
 })
 
+con.connect((err, result) => {
+  if (err) throw err
+  console.log('Connected!')
+  if (err) throw err
+  console.log('Result: ' + JSON.stringify(result))
+})
+
 module.exports = {con}

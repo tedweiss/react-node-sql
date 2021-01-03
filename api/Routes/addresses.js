@@ -1,17 +1,30 @@
 const express = require('express')
 const router = express.Router()
-const {addresses} = require('../Utils/addresses')
+const {getAllAddresses, getProfileAddresses} = require('../Utils/addresses')
 
 router.get('/', function (req, res) {
   console.log('api/addresses called!!!!')
-  res.json(addresses)
+  getAllAddresses()
+    .then(addresses => {
+      res.json(addresses)
+    })
+    .catch(err => {
+      console.log('catch err: ', err)
+    })
 })
 
-router.get('/:userId', function (req, res) {
-  console.log('api/addresses/:userId called!!!!')
-  console.log('req.params', req.params)
-  res.json(req.params)
+router.get('/:profileId', function (req, res) {
+  console.log('api/addresses/:profileId called!!!!')
+  const id = parseInt(req.params.profileId)
+  getProfileAddresses(id)
+    .then(addresses => {
+      res.json(addresses)
+    })
+    .catch(err => {
+      console.log('catch err: ', err)
+    })
 })
+
 router.post('/', function (req, res) {
   res.send('POST route on addresses.')
 })

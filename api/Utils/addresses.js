@@ -1,16 +1,26 @@
 const {con} = require('./connection')
 
-let addresses = []
-
-con.connect(err => {
-  if (err) throw err
-  const queryString = 'SELECT * FROM addresses'
-  con.query(queryString, (err, results) => {
-    if (err) throw err
-    results.map(result => {
-      addresses.push(result)
+module.exports = {
+  getAllAddresses: () => {
+    return new Promise(function (resolve, reject) {
+      const queryString = `SELECT * FROM addresses`
+      con.query(queryString, (err, rows) => {
+        if (err) {
+          return reject(err)
+        }
+        resolve(rows)
+      })
     })
-  })
-})
-
-module.exports = {addresses}
+  },
+  getProfileAddresses: profileId => {
+    return new Promise(function (resolve, reject) {
+      const queryString = `SELECT * FROM addresses WHERE id = ${profileId}`
+      con.query(queryString, (err, rows) => {
+        if (err) {
+          return reject(err)
+        }
+        resolve(rows)
+      })
+    })
+  },
+}

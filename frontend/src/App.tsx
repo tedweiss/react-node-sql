@@ -9,7 +9,7 @@ interface Test {
 }
 
 const App: React.FC<Test> = ({greeting = 'hello'}) => {
-  const {loading, data, error} = useFetch('/api/addresses', [])
+  const {loading, data, error} = useFetch('/api/addresses/1', [])
 
   const addresses = data
   return (
