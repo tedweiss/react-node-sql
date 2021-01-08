@@ -14,7 +14,7 @@ module.exports = {
   },
   getProfileAddresses: profileId => {
     return new Promise(function (resolve, reject) {
-      const queryString = `SELECT * FROM addresses WHERE id = ${profileId}`
+      const queryString = `SELECT * FROM addresses WHERE profileId = ${profileId}`
       con.query(queryString, (err, rows) => {
         if (err) {
           return reject(err)

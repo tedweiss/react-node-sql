@@ -32,6 +32,7 @@ export const Profiles: React.FC<ProfilesProps> = ({profiles}) => {
                 birthDate={profile.birthDate}
                 birthCity={profile.birthCity}
                 birthState={profile.birthState}
+                birthCountry={profile.birthCountry}
                 height={profile.height}
                 weight={profile.weight}
                 bloodType={profile.bloodType}

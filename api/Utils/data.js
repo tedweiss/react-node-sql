@@ -5,6 +5,7 @@ const address1 = {
   street2: 'Apt. 2B',
   city: 'Anywhere',
   state: 'MI',
+  country: 'US',
   zip: '90210',
   extendedZip: '',
 }
@@ -16,6 +17,7 @@ const address2 = {
   street2: 'Apt. C4',
   city: 'Somewhere',
   state: 'WI',
+  country: 'US',
   zip: '12345',
   extendedZip: '6789',
 }
@@ -27,27 +29,66 @@ const profile1 = {
   firstName: 'Tony',
   middleName: 'Awesome',
   lastName: 'Stark',
-  birthDate: 'May 29,1970',
+  birthDate: '1970-05-29',
   birthCity: 'Manhattan',
-  birthState: 'New York',
-  height: '6"1\'',
+  birthState: 'NY',
+  birthCountry: 'US',
+  height: '6\'1"',
   weight: 225,
   bloodType: 'A+',
 }
 
 const profile2 = {
+  id: 2,
+  firstName: 'Pepper',
+  middleName: 'Sweet',
+  lastName: 'Potts',
+  birthDate: '1972-04-10',
+  birthCity: 'Sacramento',
+  birthState: 'CA',
+  birthCountry: 'US',
+  height: '5\'11"',
+  weight: 145,
+  bloodType: 'O',
+}
+
+const profile3 = {
   id: 12345,
   firstName: 'Clark',
   middleName: 'Super',
   lastName: 'Kent',
-  birthDate: 'April 17, 1977',
-  birthCity: 'Kryptonoplis',
+  birthDate: '1977-04-17',
+  birthCity: 'Kryptonopolis',
   birthState: 'Krypton',
-  height: '6"3\'',
+  birthCountry: '',
+  height: '6\'3"',
   weight: 235,
   bloodType: 'A-',
 }
 
-const profiles = [profile1, profile2]
+const profile4 = {
+  id: 4,
+  firstName: 'Lois',
+  middleName: 'Joanne',
+  lastName: 'Lane',
+  birthDate: '1977-08-17',
+  birthCity: 'Pittsdale',
+  birthState: 'IA',
+  birthCountry: 'US',
+  height: '5\'3"',
+  weight: 115,
+  bloodType: 'AB',
+}
 
-module.exports = {address1, address2, addresses, profile1, profile2, profiles}
+const profiles = [profile1, profile2, profile3, profile4]
+
+module.exports = {
+  address1,
+  address2,
+  addresses,
+  profile1,
+  profile2,
+  profile3,
+  profile4,
+  profiles,
+}

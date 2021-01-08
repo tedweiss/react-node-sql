@@ -10,23 +10,26 @@ export interface ProfileProps {
   birthDate: string
   birthCity: string
   birthState: string
+  birthCountry: string
   height: string
   weight: number
   bloodType: string
 }
 
 export const Profile: React.FC<ProfileProps> = ({
+  id,
   firstName,
   middleName,
   lastName,
   birthDate,
   birthCity,
   birthState,
+  birthCountry,
   height,
   weight,
   bloodType,
 }) => {
-  const {data, loading} = useFetch('/api/addresses', [])
+  const {data, loading} = useFetch('/api/addresses/' + id, [])
 
   const addresses = data
   return (
@@ -37,6 +40,7 @@ export const Profile: React.FC<ProfileProps> = ({
       <div>{birthDate}</div>
       <div>{birthCity}</div>
       <div>{birthState}</div>
+      <div>{birthCountry}</div>
       <div>{height}</div>
       <div>{weight}</div>
       <div>{bloodType}</div>

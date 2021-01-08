@@ -1,10 +1,16 @@
-var express = require('express')
-var router = express.Router()
-const data = require('../Utils/data')
+const express = require('express')
+const router = express.Router()
+const {getAllProfiles} = require('../Utils/profiles')
 
 router.get('/', function (req, res) {
   console.log('api/profiles called!!!!')
-  res.json(data.profiles)
+  getAllProfiles()
+    .then(addresses => {
+      res.json(addresses)
+    })
+    .catch(err => {
+      console.log('catch err: ', err)
+    })
 })
 
 router.get('/:userId', function (req, res) {
