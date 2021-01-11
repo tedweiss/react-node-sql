@@ -11,6 +11,10 @@ app.get('/', (req, res) => {
   res.send('App Works !!!!')
 })
 
-app.listen(port, () => {
-  console.log(`Server listening on the port::${port}`)
-})
+try {
+  app.listen(port, () => {
+    console.log(`Server listening on the port::${port}`)
+  })
+} catch (error) {
+  console.log('Did not work.', error)
+}
