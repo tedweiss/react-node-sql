@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const {getAllProfiles} = require('../Utils/profiles')
+const {getAllProfiles, getUserProfiles} = require('../Utils/profiles')
 
 router.get('/', function (req, res) {
   console.log('api/profiles called!!!!')
@@ -15,7 +15,14 @@ router.get('/', function (req, res) {
 
 router.get('/:userId', function (req, res) {
   console.log('api/profiles/:userId called!!!!')
-  res.json(profile)
+  const id = parseInt(req.params.userId)
+  getUserProfiles(id)
+    .then(profiles => {
+      res.json(profiles)
+    })
+    .catch(err => {
+      console.log('catch err: ', err)
+    })
 })
 
 router.post('/', function (req, res) {

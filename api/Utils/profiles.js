@@ -12,4 +12,15 @@ module.exports = {
       })
     })
   },
+  getUserProfiles: userId => {
+    return new Promise(function (resolve, reject) {
+      const queryString = `SELECT * FROM profiles WHERE userId = ${userId}`
+      con.query(queryString, (err, rows) => {
+        if (err) {
+          return reject(err)
+        }
+        resolve(rows)
+      })
+    })
+  },
 }
