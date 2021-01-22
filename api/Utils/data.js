@@ -82,6 +82,18 @@ const profile4 = {
 
 const profiles = [profile1, profile2, profile3, profile4]
 
+const user1 = {
+  id: 1,
+  email: 'tony.stark@starkindustry.com',
+}
+
+const user2 = {
+  id: 2,
+  email: 'clark.kent@dailyplanet.com',
+}
+
+const users = [user1, user2]
+
 module.exports = {
   address1,
   address2,
@@ -91,4 +103,7 @@ module.exports = {
   profile3,
   profile4,
   profiles,
+  user1,
+  user2,
+  users,
 }
