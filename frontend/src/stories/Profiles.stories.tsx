@@ -5,11 +5,11 @@ import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 
 import {Profiles, ProfilesProps} from '../ui/Profiles'
-import {addresses, profiles} from './mockData/mockData'
+import {profile1, profile2} from './mockData/mockData'
 
-const mock = new MockAdapter(axios)
+const profilesMock = new MockAdapter(axios)
 
-mock.onGet('/api/addresses').reply(200, addresses)
+profilesMock.onGet('/api/profiles/1').reply(200, [profile1, profile2])
 
 export default {
   title: 'Profiles',
@@ -19,4 +19,4 @@ export default {
 const Template: Story<ProfilesProps> = args => <Profiles {...args} />
 
 export const ProfilesStory = Template.bind({})
-ProfilesStory.args = {profiles}
+ProfilesStory.args = {id: 1}

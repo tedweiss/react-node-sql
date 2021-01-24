@@ -9,17 +9,15 @@ interface Test {
 }
 
 const App: React.FC<Test> = ({greeting = 'hello'}) => {
-  const {loading: load, data: id, error: err} = useFetch(
+  const {loading, data: id, error} = useFetch(
     '/api/users/tony.stark@starkindustry.com',
     [],
   )
-  console.log('id:', id)
-  const {loading, data: profiles, error} = useFetch(`/api/profiles/${id}`, [])
 
   return (
     <div className="App">
       {greeting}
-      {!loading && !error && <Profiles profiles={profiles} />}
+      {!loading && !error && <Profiles id={id} />}
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>

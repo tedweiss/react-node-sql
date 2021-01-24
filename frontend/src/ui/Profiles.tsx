@@ -1,45 +1,37 @@
 import React, {useState} from 'react'
-import {Profile, ProfileProps} from './Profile'
+import {Profile, ProfileObjProps} from './Profile'
+import useFetch from '../services/useFetch'
 
 export interface ProfilesProps {
-  profiles: ProfileProps[]
+  id: number
 }
 
-export const Profiles: React.FC<ProfilesProps> = ({profiles}) => {
+export const Profiles: React.FC<ProfilesProps> = ({id}) => {
+  const {loading, data: profiles, error} = useFetch(`/api/profiles/${id}`, [])
+
   const [selectedProfile, setSelectedProfile] = useState<number>()
   return (
-    <div>
-      Profiles
-      {!selectedProfile &&
-        profiles.map(profile => {
-          return (
-            <div
-              onClick={() => setSelectedProfile(profile.id)}
-              key={profile.id}
-            >{`${profile.firstName} ${profile.lastName}`}</div>
-          )
-        })}
-      {selectedProfile &&
-        profiles.map(profile => {
-          if (selectedProfile === profile.id) {
-            return (
-              <Profile
-                key={profile.id}
-                id={profile.id}
-                firstName={profile.firstName}
-                middleName={profile.middleName}
-                lastName={profile.lastName}
-                birthDate={profile.birthDate}
-                birthCity={profile.birthCity}
-                birthState={profile.birthState}
-                birthCountry={profile.birthCountry}
-                height={profile.height}
-                weight={profile.weight}
-                bloodType={profile.bloodType}
-              />
-            )
-          }
-        })}
-    </div>
+    <>
+      {!loading && !error && (
+        <div>
+          Profiles
+          {!selectedProfile &&
+            profiles.map((profile: ProfileObjProps) => {
+              return (
+                <div
+                  onClick={() => setSelectedProfile(profile.id)}
+                  key={profile.id}
+                >{`${profile.firstName} ${profile.lastName}`}</div>
+              )
+            })}
+          {selectedProfile &&
+            profiles.map((profile: ProfileObjProps) => {
+              if (selectedProfile === profile.id) {
+                return <Profile key={profile.id} profile={profile} />
+              }
+            })}
+        </div>
+      )}
+    </>
   )
 }

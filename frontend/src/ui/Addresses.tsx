@@ -1,29 +1,23 @@
 import React from 'react'
-import {Address, AddressProps} from './Address'
+import {Address, AddressObjProps} from './Address'
+import useFetch from '../services/useFetch'
 
 export interface AddressesProps {
-  addresses: AddressProps[]
+  id: number
 }
 
-export const Addresses: React.FC<AddressesProps> = ({addresses}) => {
+export const Addresses: React.FC<AddressesProps> = ({id}) => {
+  const {loading, data: addresses, error} = useFetch(`/api/addresses/${id}`, [])
   return (
-    <div>
-      Addresses
-      {addresses.map(address => {
-        return (
-          <Address
-            key={address.id}
-            id={address.id}
-            type={address.type}
-            street1={address.street1}
-            street2={address.street2}
-            city={address.city}
-            state={address.state}
-            zip={address.zip}
-            extendedZip={address.extendedZip}
-          />
-        )
-      })}
-    </div>
+    <>
+      {!loading && !error && (
+        <div>
+          Addresses
+          {addresses.map((address: AddressObjProps) => {
+            return <Address key={address.id} address={address} />
+          })}
+        </div>
+      )}
+    </>
   )
 }

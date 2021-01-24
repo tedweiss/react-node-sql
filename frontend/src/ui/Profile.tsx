@@ -1,8 +1,11 @@
 import React from 'react'
 import {Addresses} from './Addresses'
-import useFetch from '../services/useFetch'
 
 export interface ProfileProps {
+  profile: ProfileObjProps
+}
+
+export interface ProfileObjProps {
   id: number
   firstName: string
   middleName: string
@@ -16,35 +19,20 @@ export interface ProfileProps {
   bloodType: string
 }
 
-export const Profile: React.FC<ProfileProps> = ({
-  id,
-  firstName,
-  middleName,
-  lastName,
-  birthDate,
-  birthCity,
-  birthState,
-  birthCountry,
-  height,
-  weight,
-  bloodType,
-}) => {
-  const {data, loading} = useFetch('/api/addresses/' + id, [])
-
-  const addresses = data
+export const Profile: React.FC<ProfileProps> = ({profile}) => {
   return (
     <div>
-      <div>{firstName}</div>
-      <div>{middleName}</div>
-      <div>{lastName}</div>
-      <div>{birthDate}</div>
-      <div>{birthCity}</div>
-      <div>{birthState}</div>
-      <div>{birthCountry}</div>
-      <div>{height}</div>
-      <div>{weight}</div>
-      <div>{bloodType}</div>
-      {!loading && <Addresses addresses={addresses} />}
+      <div>{profile.firstName}</div>
+      <div>{profile.middleName}</div>
+      <div>{profile.lastName}</div>
+      <div>{profile.birthDate}</div>
+      <div>{profile.birthCity}</div>
+      <div>{profile.birthState}</div>
+      <div>{profile.birthCountry}</div>
+      <div>{profile.height}</div>
+      <div>{profile.weight}</div>
+      <div>{profile.bloodType}</div>
+      <Addresses id={profile.id} />
     </div>
   )
 }

@@ -18,4 +18,4 @@ export default {
 const Template: Story<ProfileProps> = args => <Profile {...args} />
 
 export const ProfileStory = Template.bind({})
-ProfileStory.args = {...profile1}
+ProfileStory.args = {profile: profile1}

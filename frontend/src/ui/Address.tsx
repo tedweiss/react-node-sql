@@ -1,6 +1,9 @@
 import React from 'react'
 
 export interface AddressProps {
+  address: AddressObjProps
+}
+export interface AddressObjProps {
   id: number
   type: string
   street1: string
@@ -11,23 +14,17 @@ export interface AddressProps {
   extendedZip: string
 }
 
-export const Address: React.FC<AddressProps> = ({
-  type,
-  street1,
-  street2,
-  city,
-  state,
-  zip,
-  extendedZip,
-}) => {
-  const fullZip = extendedZip ? zip + '-' + extendedZip : zip
+export const Address: React.FC<AddressProps> = ({address}) => {
+  const fullZip = address.extendedZip
+    ? address.zip + '-' + address.extendedZip
+    : address.zip
   return (
     <div>
-      <div>{type}</div>
-      <div>{street1}</div>
-      <div>{street2}</div>
-      <div>{city}</div>
-      <div>{state}</div>
+      <div>{address.type}</div>
+      <div>{address.street1}</div>
+      <div>{address.street2}</div>
+      <div>{address.city}</div>
+      <div>{address.state}</div>
       <div>{fullZip}</div>
     </div>
   )

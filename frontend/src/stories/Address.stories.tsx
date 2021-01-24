@@ -13,4 +13,4 @@ export default {
 const Template: Story<AddressProps> = args => <Address {...args} />
 
 export const AddressStory = Template.bind({})
-AddressStory.args = {...address1}
+AddressStory.args = {address: address1}
